@@ -1,12 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, Platform, StatusBar } from 'react-native';
 
 export default function App() {
+  console.log(StatusBar.currentHeight)
   const handlePress = () => (console.log("like handle press!"))
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1} onPress={handlePress} >Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World!</Text>
+      <Button title="tab me" onPress={() => (alert("button tabed"))} />
     </SafeAreaView>
   );
 }
@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 50
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
 });
